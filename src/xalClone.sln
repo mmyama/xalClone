@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30709.132
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xalendar.Api", "Xalendar.Api\Xalendar.Api.csproj", "{A7C4DC53-1403-4D44-A41E-BB0A545AD518}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xalendar.Api", "Xalendar.Api\Xalendar.Api.csproj", "{A7C4DC53-1403-4D44-A41E-BB0A545AD518}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EDEEB76C-577D-4C99-988B-6FD9469323AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xalendar.Api.Tests", "Xalendar.Api.Tests\Xalendar.Api.Tests.csproj", "{CA775F20-5F47-48C4-A76F-47790CE8EE1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +19,17 @@ Global
 		{A7C4DC53-1403-4D44-A41E-BB0A545AD518}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7C4DC53-1403-4D44-A41E-BB0A545AD518}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7C4DC53-1403-4D44-A41E-BB0A545AD518}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA775F20-5F47-48C4-A76F-47790CE8EE1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA775F20-5F47-48C4-A76F-47790CE8EE1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA775F20-5F47-48C4-A76F-47790CE8EE1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA775F20-5F47-48C4-A76F-47790CE8EE1E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A7C4DC53-1403-4D44-A41E-BB0A545AD518} = {EDEEB76C-577D-4C99-988B-6FD9469323AD}
+		{CA775F20-5F47-48C4-A76F-47790CE8EE1E} = {EDEEB76C-577D-4C99-988B-6FD9469323AD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3CAE01AD-85F8-4B4A-AECE-84BE5EA3D2D4}
