@@ -19,8 +19,4 @@
     <ProjectReference Include="..\Xalendar.Api\Xalendar.Api.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
 </Project>
