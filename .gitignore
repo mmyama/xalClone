@@ -5,6 +5,7 @@ src/Xalendar.Sample/Xalendar.Sample.Android/Resources/Resource.designer.cs
 src/.idea/
 coverage/
 src/Xalendar.Api.Tests/coverage.json
+src/Xalendar.Api.Tests/coverage.xml
 
 # Created by https://www.gitignore.io/api/dotnetcore,visualstudio
 # Edit at https://www.gitignore.io/?templates=dotnetcore,visualstudio
