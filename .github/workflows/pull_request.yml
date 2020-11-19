@@ -8,7 +8,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Run unit tests
-      run: dotnet test src/Xalendar.Api.Tests/Xalendar.Api.Tests.csproj -v n
+      run: dotnet test src/Xalendar.Api.Tests/Xalendar.Api.Tests.csproj -v n /p:CollectCoverage=true /pCoverletOutputFormat=opencover
+    - name: Send report to codecov.io
+      run: bash <(curl -s https://codecov.io/bash)
+      env:
+       CODECOV_TOKEN: 529cdeb4-128e-40fa-a6a4-fc6499d67484
 
   Api:
     name: Build Xalendar.Api project
