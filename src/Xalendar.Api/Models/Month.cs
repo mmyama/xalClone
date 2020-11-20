@@ -32,14 +32,28 @@ namespace Xalendar.Api.Models
 
         public void SelectDay(Day selectedDay)
         {
-            if (GetSelectedDay() is Day currentDaySelected)
-                currentDaySelected.IsSelected = false;
+            UnselectCurrentDay();
+            selectNewDay(selectedDay);
+        }
 
+        private void UnselectCurrentDay()
+        {
+            var selectedDay = GetSelectedDay();
+            if (selectedDay is null)
+                return;
+
+            selectedDay.IsSelected = false;
+        }
+
+        private void selectNewDay(Day selectedDay)
+        {
             var newSelectedDay = GetDaysOfMonth()
                 .FirstOrDefault(day => day.DateTime.Equals(selectedDay.DateTime));
 
-            if (newSelectedDay is Day localNewSelectedDay)
-                localNewSelectedDay.IsSelected = true;
+            if (newSelectedDay is null)
+                return;
+
+            newSelectedDay.IsSelected = true;
         }
 
         public Day GetSelectedDay()

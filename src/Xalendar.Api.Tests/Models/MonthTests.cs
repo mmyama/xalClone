@@ -74,5 +74,19 @@ namespace Xalendar.Api.Tests.Models
             //Assert.AreEqual(day, selectedDay);
             Assert.AreEqual(newDaySelected.DateTime.Date.Ticks, selectedDay.DateTime.Date.Ticks);
         }
+
+        [Test]
+        public void SelectDayFromAnotherMonthShouldFail()
+        {
+            var dateTime = new DateTime(2020, 2, 1);
+            var month = new Month(dateTime);
+            var isSelected = true;
+            var day = new Day(dateTime.AddMonths(1), isSelected);
+            month.SelectDay(day);
+
+            var selectedDay = month.GetSelectedDay();
+
+            Assert.IsNull(selectedDay);
+        }
     }
 }
