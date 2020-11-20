@@ -8,10 +8,9 @@ namespace Xalendar.Api.Models
     {
         private readonly DateTime _dateTime;
 
-        public Day(DateTime dateTime, bool isSelected = false)
+        public Day(DateTime dateTime)
         {
             _dateTime = dateTime;
-            _isSelected = isSelected;
         }
 
         public bool IsToday => DateTime.Now.Day == _dateTime.Day;
@@ -23,8 +22,6 @@ namespace Xalendar.Api.Models
             get => _isSelected;
             set => _isSelected = value;
         }
-
-        public DateTime DateTime => _dateTime;
 
     }
 }
