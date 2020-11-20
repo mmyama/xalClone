@@ -45,7 +45,6 @@ namespace Xalendar.Api.Models
         public Day GetSelectedDay()
         {
             return GetDaysOfMonth()
-                .ToList()
                 .FirstOrDefault(day => day.IsSelected);
         }
     }
