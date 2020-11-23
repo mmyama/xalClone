@@ -54,7 +54,6 @@ namespace Xalendar.Api.Tests.Models
 
             var selectedDay = month.GetSelectedDay();
 
-            //Assert.AreEqual(day, selectedDay);
             Assert.AreEqual(day.DateTime.Date.Ticks, selectedDay.DateTime.Date.Ticks);
         }
 
@@ -71,7 +70,6 @@ namespace Xalendar.Api.Tests.Models
 
             var selectedDay = month.GetSelectedDay();
 
-            //Assert.AreEqual(day, selectedDay);
             Assert.AreEqual(newDaySelected.DateTime.Date.Ticks, selectedDay.DateTime.Date.Ticks);
         }
 
