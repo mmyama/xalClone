@@ -6,15 +6,15 @@ namespace Xalendar.Api.Models
 {
     public class Day
     {
-        private readonly DateTime _dateTime;
+        public DateTime DateTime { get; }
 
         public Day(DateTime dateTime, bool isSelected = false)
         {
-            _dateTime = dateTime;
+            DateTime = dateTime;
             _isSelected = isSelected;
         }
 
-        public bool IsToday => DateTime.Now.Day == _dateTime.Day;
+        public bool IsToday => DateTime.Now.Day == DateTime.Day;
 
         private bool _isSelected;
 
@@ -23,8 +23,6 @@ namespace Xalendar.Api.Models
             get => _isSelected;
             set => _isSelected = value;
         }
-
-        public DateTime DateTime => _dateTime;
 
     }
 }

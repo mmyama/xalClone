@@ -7,59 +7,23 @@ namespace Xalendar.Api.Models
 {
     public class Month
     {
-        private readonly DateTime _dateTime;
-        private readonly IReadOnlyList<Day> _days;
+        public DateTime MonthDateTime { get; }
+        public IReadOnlyList<Day> Days;
 
         public Month(DateTime dateTime)
         {
-            _dateTime = dateTime;
-            _days = GenerateDaysOfMonth();
+            MonthDateTime = dateTime;
+            Days = GenerateDaysOfMonth();
         }
 
         private List<Day> GenerateDaysOfMonth()
         {
             return Enumerable
-                .Range(1, DateTime.DaysInMonth(_dateTime.Year, _dateTime.Month))
-                .Select(dayValue => new DateTime(_dateTime.Year, _dateTime.Month, dayValue))
+                .Range(1, DateTime.DaysInMonth(MonthDateTime.Year, MonthDateTime.Month))
+                .Select(dayValue => new DateTime(MonthDateTime.Year, MonthDateTime.Month, dayValue))
                 .Select(dateTime => new Day(dateTime))
                 .ToList();
         }
 
-        public IReadOnlyList<Day> GetDaysOfMonth()
-        {
-            return _days;
-        }
-
-        public void SelectDay(Day selectedDay)
-        {
-            UnselectCurrentDay();
-            selectNewDay(selectedDay);
-        }
-
-        private void UnselectCurrentDay()
-        {
-            var selectedDay = GetSelectedDay();
-            if (selectedDay is null)
-                return;
-
-            selectedDay.IsSelected = false;
-        }
-
-        private void selectNewDay(Day selectedDay)
-        {
-            var newSelectedDay = GetDaysOfMonth()
-                .FirstOrDefault(day => day.DateTime.Equals(selectedDay.DateTime));
-
-            if (newSelectedDay is null)
-                return;
-
-            newSelectedDay.IsSelected = true;
-        }
-
-        public Day GetSelectedDay()
-        {
-            return GetDaysOfMonth()
-                .FirstOrDefault(day => day.IsSelected);
-        }
     }
 }
