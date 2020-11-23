@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 using Xalendar.Api.Models;
@@ -31,5 +32,61 @@ namespace Xalendar.Api.Tests.Models
             Assert.AreEqual(29, result.Count);
         }
 
+        [Test]
+        public void ShouldNotExistSelectedDay()
+        {
+            var dateTime = new DateTime(2020, 2, 1);
+            var month = new Month(dateTime);
+
+            var selectedDay = month.GetSelectedDay();
+
+            Assert.IsNull(selectedDay);
+        }
+
+        [Test]
+        public void SelectedDayShouldBeTheFirstDayOfMonth()
+        {
+            var dateTime = new DateTime(2020, 2, 1);
+            var month = new Month(dateTime);
+            var isSelected = true;
+            var day = new Day(dateTime, isSelected);
+            month.SelectDay(day);
+
+            var selectedDay = month.GetSelectedDay();
+
+            //Assert.AreEqual(day, selectedDay);
+            Assert.AreEqual(day.DateTime.Date.Ticks, selectedDay.DateTime.Date.Ticks);
+        }
+
+        [Test]
+        public void SelectedDayShouldBeChanged()
+        {
+            var dateTime = new DateTime(2020, 2, 1);
+            var month = new Month(dateTime);
+            var isSelected = true;
+            var day = new Day(dateTime, isSelected);
+            month.SelectDay(day);
+            var newDaySelected = new Day(dateTime.AddDays(10), isSelected);
+            month.SelectDay(newDaySelected);
+
+            var selectedDay = month.GetSelectedDay();
+
+            //Assert.AreEqual(day, selectedDay);
+            Assert.AreEqual(newDaySelected.DateTime.Date.Ticks, selectedDay.DateTime.Date.Ticks);
+        }
+
+        [Test]
+        public void SelectDayFromAnotherMonthShouldFail()
+        {
+            var dateTime = new DateTime(2020, 2, 1);
+            var month = new Month(dateTime);
+            var isSelected = true;
+            var day = new Day(dateTime.AddMonths(1), isSelected);
+            month.SelectDay(day);
+
+            var selectedDay = month.GetSelectedDay();
+
+            Assert.IsNull(selectedDay);
+        }
     }
 }

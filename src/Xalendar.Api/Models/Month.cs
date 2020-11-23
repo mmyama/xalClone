@@ -29,5 +29,37 @@ namespace Xalendar.Api.Models
         {
             return _days;
         }
+
+        public void SelectDay(Day selectedDay)
+        {
+            UnselectCurrentDay();
+            selectNewDay(selectedDay);
+        }
+
+        private void UnselectCurrentDay()
+        {
+            var selectedDay = GetSelectedDay();
+            if (selectedDay is null)
+                return;
+
+            selectedDay.IsSelected = false;
+        }
+
+        private void selectNewDay(Day selectedDay)
+        {
+            var newSelectedDay = GetDaysOfMonth()
+                .FirstOrDefault(day => day.DateTime.Equals(selectedDay.DateTime));
+
+            if (newSelectedDay is null)
+                return;
+
+            newSelectedDay.IsSelected = true;
+        }
+
+        public Day GetSelectedDay()
+        {
+            return GetDaysOfMonth()
+                .FirstOrDefault(day => day.IsSelected);
+        }
     }
 }
