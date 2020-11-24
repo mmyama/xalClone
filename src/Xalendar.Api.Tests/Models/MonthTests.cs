@@ -89,7 +89,7 @@ namespace Xalendar.Api.Tests.Models
         }
 
         [Test]
-        public void MonthsShouldBeEquals()
+        public void MonthsShouldBeEqual()
         {
             var month1 = new Month(new DateTime(2020, 1, 1));
             var month2 = new Month(new DateTime(2020, 1, 10));
@@ -100,12 +100,34 @@ namespace Xalendar.Api.Tests.Models
         }
 
         [Test]
-        public void MonthsShouldNotBeEquals()
+        public void MonthsShouldNotBeEqual()
         {
             var month1 = new Month(new DateTime(2020, 1, 1));
             var month2 = new Month(new DateTime(2020, 2, 1));
 
             var result = month1.Equals(month2);
+
+            Assert.IsFalse(result);
+        }
+
+        [Test]
+        public void ObjectsShouldBeEqual()
+        {
+            object obj1 = new Month(new DateTime(2020, 1, 1));
+            object obj2 = new Month(new DateTime(2020, 1, 10));
+
+            var result = obj1.Equals(obj2);
+
+            Assert.IsTrue(result);
+        }
+
+        [Test]
+        public void ObjectsShouldNotBeEqual()
+        {
+            object obj1 = new Month(new DateTime(2020, 1, 1));
+            object obj2 = new Month(new DateTime(2020, 2, 1));
+
+            var result = obj1.Equals(obj2);
 
             Assert.IsFalse(result);
         }
