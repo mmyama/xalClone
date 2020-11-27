@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Xalendar.Api.Extensions;
 using Xalendar.Api.Models;
 
 namespace Xalendar.Api.Tests.Models
@@ -97,6 +98,18 @@ namespace Xalendar.Api.Tests.Models
             var events = day.Events;
 
             Assert.IsEmpty(events);
+        }
+
+        [Test]
+        public void EventsShouldBeAdded()
+        {
+            var day = new Day(DateTime.Now);
+            var @event = new Event(1, "Name", DateTime.Now, DateTime.Now, false);
+            day.AddEvent(@event);
+
+            var events = day.Events;
+
+            Assert.IsNotEmpty(events);
         }
     }
 }
