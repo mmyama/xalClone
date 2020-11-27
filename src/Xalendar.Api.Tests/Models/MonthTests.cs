@@ -87,5 +87,83 @@ namespace Xalendar.Api.Tests.Models
 
             Assert.IsNull(selectedDay);
         }
+
+        [Test]
+        public void MonthsShouldBeEquals()
+        {
+            var month1 = new Month(new DateTime(2020, 1, 1));
+            var month2 = new Month(new DateTime(2020, 1, 10));
+
+            var result = month1.Equals(month2);
+
+            Assert.IsTrue(result);
+        }
+
+        [Test]
+        public void MonthsShouldNotBeEquals()
+        {
+            var month1 = new Month(new DateTime(2020, 1, 1));
+            var month2 = new Month(new DateTime(2020, 2, 1));
+
+            var result = month1.Equals(month2);
+
+            Assert.IsFalse(result);
+        }
+
+        [Test]
+        public void ObjectsShouldBeEquals()
+        {
+            object obj1 = new Month(new DateTime(2020, 1, 1));
+            object obj2 = new Month(new DateTime(2020, 1, 10));
+
+            var result = obj1.Equals(obj2);
+
+            Assert.IsTrue(result);
+        }
+
+        [Test]
+        public void ObjectsShouldNotBeEquals()
+        {
+            object obj1 = new Month(new DateTime(2020, 1, 1));
+            object obj2 = new Month(new DateTime(2020, 2, 1));
+
+            var result = obj1.Equals(obj2);
+
+            Assert.IsFalse(result);
+        }
+
+        [Test]
+        public void MonthEqualOperatorShouldBeEquals()
+        {
+            var month1 = new Month(new DateTime(2020, 1, 1));
+            var month2 = new Month(new DateTime(2020, 1, 10));
+
+            var result = month1 == month2;
+
+            Assert.IsTrue(result);
+        }
+
+        [Test]
+        public void MonthEqualOperatorShouldNotBeEquals()
+        {
+            var month1 = new Month(new DateTime(2020, 1, 1));
+            var month2 = new Month(new DateTime(2020, 2, 1));
+
+            var result = month1 != month2;
+
+            Assert.IsTrue(result);
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
