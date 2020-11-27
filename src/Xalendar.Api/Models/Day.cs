@@ -37,8 +37,16 @@ namespace Xalendar.Api.Models
             set => _isSelected = value;
         }
 
+        public override bool Equals(object obj)
+        {
+            if (obj is Day dayToCompare)
+                return dayToCompare.DateTime.Date.Ticks == DateTime.Date.Ticks;
+            return false;
+        }
+
+        public override int GetHashCode() =>
+            (DateTime.Date.Ticks).GetHashCode();
+
         public override string ToString() => DateTime.Day.ToString();
-
-
     }
 }
