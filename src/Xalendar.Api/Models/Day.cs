@@ -48,7 +48,5 @@ namespace Xalendar.Api.Models
             (DateTime.Date.Ticks).GetHashCode();
 
         public override string ToString() => DateTime.Day.ToString();
-
-
     }
 }
