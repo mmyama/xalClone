@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Xalendar.Api.Models
@@ -18,6 +19,8 @@ namespace Xalendar.Api.Models
         }
 
         public bool IsToday => DateTime.Now.Day == DateTime.Day;
+
+        public bool HasEvents => Events.Any();
 
         private bool _isSelected;
 
