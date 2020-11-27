@@ -30,5 +30,8 @@ namespace Xalendar.Api.Models
             set => _isSelected = value;
         }
 
+        public override string ToString() => DateTime.Day.ToString();
+
+
     }
 }
