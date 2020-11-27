@@ -11,6 +11,13 @@ namespace Xalendar.Api.Models
 
         public IList<Event> Events { get; }
 
+        public bool IsWeekend => DateTime.DayOfWeek switch
+        {
+            DayOfWeek.Saturday => true,
+            DayOfWeek.Sunday => true,
+            _ => false
+        };
+
         public Day(DateTime dateTime, bool isSelected = false)
         {
             DateTime = dateTime;
