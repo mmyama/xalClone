@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using static Xalendar.Api.Extensions.MonthExtention;
 
 namespace Xalendar.Api.Models
 {
@@ -13,16 +14,33 @@ namespace Xalendar.Api.Models
         public Month(DateTime dateTime)
         {
             MonthDateTime = dateTime;
-            Days = GenerateDaysOfMonth();
+            Days = GenerateDaysOfMonth(dateTime);
         }
 
-        private List<Day> GenerateDaysOfMonth()
+        public bool Equals(Month other)
         {
-            return Enumerable
-                .Range(1, DateTime.DaysInMonth(MonthDateTime.Year, MonthDateTime.Month))
-                .Select(dayValue => new DateTime(MonthDateTime.Year, MonthDateTime.Month, dayValue))
-                .Select(dateTime => new Day(dateTime))
-                .ToList();
+            var yearValue = MonthDateTime.Year == other.MonthDateTime.Year;
+            var monthValue = MonthDateTime.Month == other.MonthDateTime.Month;
+            //var days = Days.SequenceEqual(other.Days);
+            var days = true;
+
+            return yearValue && monthValue && days;
+        }
+
+        public static bool operator ==(Month left, Month right) =>
+            left.Equals(right);
+        public static bool operator !=(Month left, Month right) =>
+            !left.Equals(right);
+
+        public override bool Equals(object obj) =>
+            (obj is Month month) && (this.Equals(month));
+
+        public override int GetHashCode()
+        {
+            var yearValue = MonthDateTime.Year;
+            var monthValue = MonthDateTime.Month;
+
+            return (yearValue, monthValue).GetHashCode();
         }
 
     }
