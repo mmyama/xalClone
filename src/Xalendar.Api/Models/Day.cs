@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Xalendar.Api.Models
@@ -10,6 +11,13 @@ namespace Xalendar.Api.Models
 
         public IList<Event> Events { get; }
 
+        public bool IsWeekend => DateTime.DayOfWeek switch
+        {
+            DayOfWeek.Saturday => true,
+            DayOfWeek.Sunday => true,
+            _ => false
+        };
+
         public Day(DateTime dateTime, bool isSelected = false)
         {
             DateTime = dateTime;
@@ -19,6 +27,8 @@ namespace Xalendar.Api.Models
 
         public bool IsToday => DateTime.Now.Day == DateTime.Day;
 
+        public bool HasEvents => Events.Any();
+
         private bool _isSelected;
 
         public bool IsSelected
@@ -26,6 +36,9 @@ namespace Xalendar.Api.Models
             get => _isSelected;
             set => _isSelected = value;
         }
+
+        public override string ToString() => DateTime.Day.ToString();
+
 
     }
 }
