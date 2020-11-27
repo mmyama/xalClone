@@ -88,6 +88,16 @@ namespace Xalendar.Api.Tests.Models
 
             Assert.IsFalse(comparison);
         }
+
+        [Test]
+        public void EventsShouldBeEmpty()
+        {
+            var day = new Day(DateTime.Now);
+
+            var events = day.Events;
+
+            Assert.IsEmpty(events);
+        }
     }
 }
 
