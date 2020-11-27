@@ -180,6 +180,51 @@ namespace Xalendar.Api.Tests.Models
             Assert.IsFalse(result);
         }
 
+        [Test]
+        public void MonthShouldNotContainEvents()
+        {
+            var month = new Month(new DateTime(2020, 1, 1));
+
+            var eventsOfMonth = month.Days.Where(day => day.Events.Any());
+
+            Assert.IsEmpty(eventsOfMonth);
+        }
+
+        [Test]
+        public void MonthShouldContainEvents()
+        {
+            var dateTime = new DateTime(2020, 1, 1);
+            var month = new Month(dateTime);
+            var events = new List<Event>
+            {
+                new Event(1, "Name", dateTime, dateTime, false)
+            };
+            month.AddEvents(events);
+
+            var eventsOfMonth = month.Days.Where(day => day.Events.Any());
+
+            Assert.IsNotEmpty(eventsOfMonth);
+            Assert.AreEqual(1, eventsOfMonth.Count());
+        }
+
+        [Test]
+        public void EventsFromAnotherMonthShouldNotBeAdded()
+        {
+            var dateTime = new DateTime(2020, 1, 1);
+            var month = new Month(dateTime);
+            var events = new List<Event>
+            {
+                new Event(1, "Name", dateTime, dateTime, false),
+                new Event(2, "Name", dateTime.AddMonths(1), dateTime.AddMonths(1), false)
+            };
+            month.AddEvents(events);
+
+            var eventsOfMonth = month.Days.Where(day => day.Events.Any());
+
+            Assert.IsNotEmpty(eventsOfMonth);
+            Assert.AreEqual(1, eventsOfMonth.Count());
+        }
+
     }
 }
 
