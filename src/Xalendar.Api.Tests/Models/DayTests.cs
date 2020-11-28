@@ -71,10 +71,14 @@ namespace Xalendar.Api.Tests.Models
             var dayOne = new Day(DateTime.Now);
             var dayTwo = new Day(DateTime.Now);
 
-            var comparison = dayOne.DateTime.Date.Ticks.Equals(dayTwo.DateTime.Date.Ticks);
+            //var comparison = dayOne.DateTime.Date.Ticks.Equals(dayTwo.DateTime.Date.Ticks);
+            var comparison = dayOne.Equals(dayTwo);
 
-            var hashCodeComparison = dayOne.DateTime.Date.Ticks.GetHashCode()
-                .Equals(dayTwo.DateTime.Date.Ticks.GetHashCode());
+//            var hashCodeComparison = dayOne.DateTime.Date.Ticks.GetHashCode()
+//                .Equals(dayTwo.DateTime.Date.Ticks.GetHashCode());
+            var hashCodeComparison = dayOne.GetHashCode()
+                .Equals(dayTwo.GetHashCode());
+
             Assert.IsTrue(comparison);
             Assert.IsTrue(hashCodeComparison);
         }
@@ -85,7 +89,8 @@ namespace Xalendar.Api.Tests.Models
             var dayOne = new Day(DateTime.Now);
             var dayTwo = new Day(DateTime.Now.AddDays(1));
 
-            var comparison = dayOne.DateTime.Date.Ticks.Equals(dayTwo.DateTime.Date.Ticks);
+//            var comparison = dayOne.DateTime.Date.Ticks.Equals(dayTwo.DateTime.Date.Ticks);
+            var comparison = dayOne.Equals(dayTwo);
 
             Assert.IsFalse(comparison);
         }
@@ -158,13 +163,13 @@ namespace Xalendar.Api.Tests.Models
 
         private static object[] DataWeekendTests =
         {
+            new object[] {new DateTime(2020, 11, 21), true},
+            new object[] {new DateTime(2020, 11, 22), true},
             new object[] {new DateTime(2020, 11, 23), false},
             new object[] {new DateTime(2020, 11, 24), false},
             new object[] {new DateTime(2020, 11, 25), false},
             new object[] {new DateTime(2020, 11, 26), false},
-            new object[] {new DateTime(2020, 11, 27), false},
-            new object[] {new DateTime(2020, 11, 28), true},
-            new object[] {new DateTime(2020, 11, 29), true}
+            new object[] {new DateTime(2020, 11, 27), false}
         };
     }
 }
