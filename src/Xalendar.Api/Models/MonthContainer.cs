@@ -4,7 +4,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.ComponentModel;
 using Xalendar.Api.Extensions;
 
 namespace Xalendar.Api.Models
@@ -12,7 +12,8 @@ namespace Xalendar.Api.Models
     public class MonthContainer
     {
 
-        private Month _month;
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public Month _month;
 
         public IReadOnlyList<Day> Days { get; }
 
@@ -24,5 +25,6 @@ namespace Xalendar.Api.Models
 
         public void SelectDay(Day selectedDay) => _month.SelectDay(selectedDay);
         public Day GetSelectedDay() => _month.GetSelectedDay();
+        public void AddEvents(IList<Event> events) => _month.AddEvents(events);
     }
 }
