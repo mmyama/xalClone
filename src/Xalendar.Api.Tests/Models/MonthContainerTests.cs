@@ -68,7 +68,7 @@ namespace Xalendar.Api.Tests.Models
 
             var result = monthContainer.GetName();
 
-            Assert.AreEqual("dezembro", result);
+            Assert.AreEqual(monthContainer._month.MonthDateTime.ToString("MMMM"), result);
         }
 
         [Test]
@@ -79,7 +79,7 @@ namespace Xalendar.Api.Tests.Models
 
             monthContainer.Next();
 
-            Assert.AreEqual("janeiro", monthContainer.GetName());
+            Assert.AreEqual(monthContainer._month.MonthDateTime.ToString("MMMM"), monthContainer.GetName());
         }
 
         [Test]
@@ -90,7 +90,7 @@ namespace Xalendar.Api.Tests.Models
 
             monthContainer.Previous();
 
-            Assert.AreEqual("novembro", monthContainer.GetName());
+            Assert.AreEqual(monthContainer._month.MonthDateTime.ToString("MMMM"), monthContainer.GetName());
         }
 
     }
