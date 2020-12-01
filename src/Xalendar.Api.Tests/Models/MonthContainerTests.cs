@@ -59,5 +59,16 @@ namespace Xalendar.Api.Tests.Models
 
             Assert.IsTrue(monthContainer._month.Days.Any(Day => Day.HasEvents));
         }
+
+        [Test]
+        public void MonthContainerShouldHaveAName()
+        {
+            var dateTime = new DateTime(2020, 12, 1);
+            var monthContainer = new MonthContainer(dateTime);
+
+            var result = monthContainer.GetName();
+
+            Assert.AreEqual("dezembro", result);
+        }
     }
 }
