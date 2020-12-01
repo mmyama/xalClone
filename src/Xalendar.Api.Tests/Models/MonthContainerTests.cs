@@ -22,5 +22,17 @@ namespace Xalendar.Api.Tests.Models
 
             Assert.IsNotEmpty(monthContainer.Days);
         }
+
+        [Test]
+        public void MonthContainerCanSelectDay()
+        {
+            var dateTime = new DateTime(2020, 12, 1);
+            var monthContainer = new MonthContainer(dateTime);
+            var selectedDay = new Day(dateTime);
+
+            monthContainer.SelectDay(selectedDay);
+
+            Assert.AreEqual(selectedDay, monthContainer.GetSelectedDay());
+        }
     }
 }
