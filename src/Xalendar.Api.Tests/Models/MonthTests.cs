@@ -95,8 +95,10 @@ namespace Xalendar.Api.Tests.Models
             var month2 = new Month(new DateTime(2020, 1, 10));
 
             var result = month1.Equals(month2);
+            var hashCodeResult = month1.GetHashCode() == month2.GetHashCode();
 
             Assert.IsTrue(result);
+            Assert.IsTrue(hashCodeResult);
         }
 
         [Test]
@@ -106,8 +108,10 @@ namespace Xalendar.Api.Tests.Models
             var month2 = new Month(new DateTime(2020, 2, 1));
 
             var result = month1.Equals(month2);
+            var hashCodeResult = month1.GetHashCode() == month2.GetHashCode();
 
             Assert.IsFalse(result);
+            Assert.IsFalse(hashCodeResult);
         }
 
         [Test]

@@ -6,10 +6,10 @@ using static Xalendar.Api.Extensions.MonthExtention;
 
 namespace Xalendar.Api.Models
 {
-    public class Month
+    public readonly struct Month
     {
         public DateTime MonthDateTime { get; }
-        public IReadOnlyList<Day> Days;
+        public IReadOnlyList<Day> Days { get; }
 
         public Month(DateTime dateTime)
         {
@@ -40,7 +40,25 @@ namespace Xalendar.Api.Models
             var yearValue = MonthDateTime.Year;
             var monthValue = MonthDateTime.Month;
 
-            return (yearValue, monthValue).GetHashCode();
+            var dayHash = GetListHasCode(Days);
+
+            return (yearValue, monthValue, dayHash).GetHashCode();
+
+            static int GetListHasCode(IReadOnlyList<Day> days)
+            {
+                var size = days.Count;
+                unchecked
+                {
+                    var hash = 31;
+                    for (var i = 0; i < size; i++)
+                    {
+                        var day = days[i];
+                        hash = 17 * hash + day.GetHashCode();
+                    }
+
+                    return hash;
+                }
+            }
         }
 
     }
