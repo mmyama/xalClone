@@ -7,7 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xalendar.Api", "Xalendar.Ap
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EDEEB76C-577D-4C99-988B-6FD9469323AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xalendar.Api.Tests", "Xalendar.Api.Tests\Xalendar.Api.Tests.csproj", "{CA775F20-5F47-48C4-A76F-47790CE8EE1E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xalendar.Api.Tests", "Xalendar.Api.Tests\Xalendar.Api.Tests.csproj", "{CA775F20-5F47-48C4-A76F-47790CE8EE1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xalendar.View", "Xalendar.View\Xalendar.View.csproj", "{87CC3EFA-67E8-4951-A5A1-C73D269CABB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xalendar.View.Tests", "Xalendar.View.Tests\Xalendar.View.Tests.csproj", "{939E92DF-980E-4CFB-9FC1-E1351E4D5B28}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +27,14 @@ Global
 		{CA775F20-5F47-48C4-A76F-47790CE8EE1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA775F20-5F47-48C4-A76F-47790CE8EE1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA775F20-5F47-48C4-A76F-47790CE8EE1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87CC3EFA-67E8-4951-A5A1-C73D269CABB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87CC3EFA-67E8-4951-A5A1-C73D269CABB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87CC3EFA-67E8-4951-A5A1-C73D269CABB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87CC3EFA-67E8-4951-A5A1-C73D269CABB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{939E92DF-980E-4CFB-9FC1-E1351E4D5B28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{939E92DF-980E-4CFB-9FC1-E1351E4D5B28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{939E92DF-980E-4CFB-9FC1-E1351E4D5B28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{939E92DF-980E-4CFB-9FC1-E1351E4D5B28}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,6 +42,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{A7C4DC53-1403-4D44-A41E-BB0A545AD518} = {EDEEB76C-577D-4C99-988B-6FD9469323AD}
 		{CA775F20-5F47-48C4-A76F-47790CE8EE1E} = {EDEEB76C-577D-4C99-988B-6FD9469323AD}
+		{87CC3EFA-67E8-4951-A5A1-C73D269CABB0} = {EDEEB76C-577D-4C99-988B-6FD9469323AD}
+		{939E92DF-980E-4CFB-9FC1-E1351E4D5B28} = {EDEEB76C-577D-4C99-988B-6FD9469323AD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3CAE01AD-85F8-4B4A-AECE-84BE5EA3D2D4}
