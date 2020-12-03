@@ -23,28 +23,12 @@ namespace Xalendar.Api.Models
             _month = new Month(dateTime);
 
             var daysOfContainer = new List<Day?>();
-            GetDayToDiscardAtStartOfMonth(daysOfContainer);
+            this.GetDayToDiscardAtStartOfMonth(daysOfContainer);
             daysOfContainer.AddRange(_month.Days);
-            GetDayToDiscardAtEndOfMonth(daysOfContainer);
+            this.GetDayToDiscardAtEndOfMonth(daysOfContainer);
             Days = daysOfContainer;
         }
 
-        private void GetDayToDiscardAtStartOfMonth(List<Day?> daysOfContainer)
-        {
-            var firstDay = _month.Days.First();
-            var numberOfDaysToDiscard = (int)firstDay.DateTime.DayOfWeek;
-
-            for (var i = 0; i < numberOfDaysToDiscard; i++)
-                daysOfContainer.Add(default(Day));
-        }
-
-        private void GetDayToDiscardAtEndOfMonth(List<Day?> daysOfContainer)
-        {
-            var lastDay = _month.Days.Last();
-            var numberOfDaysToDiscard = 6 - (int)lastDay.DateTime.DayOfWeek;
-
-            for (var i = 0; i < numberOfDaysToDiscard; i++)
-                daysOfContainer.Add(default(Day));
-        }
+        
     }
 }
