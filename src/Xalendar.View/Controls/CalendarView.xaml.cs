@@ -12,7 +12,7 @@ namespace Xalendar.View.Controls
         {
             InitializeComponent();
 
-            BindingContext = new MonthContainer(DateTime.Today);
+            BindingContext = new MonthContainer(dateTime: DateTime.Today);
         }
     }
 }
