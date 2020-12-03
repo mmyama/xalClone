@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using Xalendar.Api.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,6 +11,8 @@ namespace Xalendar.View.Controls
         public CalendarView()
         {
             InitializeComponent();
+
+            BindingContext = new MonthContainer(dateTime: DateTime.Today);
         }
     }
 }
