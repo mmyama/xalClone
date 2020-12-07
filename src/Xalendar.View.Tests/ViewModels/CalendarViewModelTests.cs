@@ -25,5 +25,13 @@ namespace Xalendar.View.Tests.ViewModels
             Assert.NotNull(viewModel.DaysOfWeek);
         }
 
+        [Test]
+        public void ConstructorShouldPopulateMonthName()
+        {
+            var viewModel = new CalendarViewModel();
+
+            Assert.NotNull(viewModel.MonthName);
+        }
+
     }
 }
