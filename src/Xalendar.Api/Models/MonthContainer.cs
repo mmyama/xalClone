@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
-using System.Linq;
 using Xalendar.Api.Extensions;
 
 namespace Xalendar.Api.Models
