@@ -66,14 +66,6 @@
                                      />
                         </Grid>
                     </Frame>
-                    <!--
-                    <Label FlexLayout.Basis="14.28%" 
-                           Text="{Binding .}" 
-                           FontSize="Subtitle" 
-                           HorizontalTextAlignment="Center"
-                           VerticalTextAlignment="Center"
-                        />
-                    -->
                 </DataTemplate>
             </BindableLayout.ItemTemplate>
         </FlexLayout>
