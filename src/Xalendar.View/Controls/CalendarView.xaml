@@ -8,6 +8,7 @@
         <ResourceDictionary>
             <converters:IsTodayToBackgroundColorConverter x:Key="IsTodayToBackgroundColorConverter"/>
             <converters:HasEventsToVisibilityConverter x:Key="HasEventsToVisibilityConverter"/>
+            <FlexBasis x:Key="DayWidht">14.28%</FlexBasis>
         </ResourceDictionary>
     </ContentView.Resources>
     <StackLayout Spacing="0">
@@ -26,7 +27,7 @@
                     Wrap="Wrap">
             <BindableLayout.ItemTemplate>
                 <DataTemplate>
-                    <Label FlexLayout.Basis="14.28%" 
+                    <Label FlexLayout.Basis="{StaticResource DayWidht}"
                            HeightRequest="56"
                            Text="{Binding .}" 
                            FontSize="Body" 
@@ -41,7 +42,7 @@
                     Wrap="Wrap">
             <BindableLayout.ItemTemplate>
                 <DataTemplate>
-                    <Frame FlexLayout.Basis="14.28%"
+                    <Frame FlexLayout.Basis="{StaticResource DayWidht}"
                            Padding="0"
                            HeightRequest="56"
                            CornerRadius="20"
