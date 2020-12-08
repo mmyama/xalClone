@@ -4,6 +4,13 @@
              xmlns:converters="clr-namespace:Xalendar.View.Converters"
              x:Class="Xalendar.View.Controls.CalendarView">
 
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <converters:IsTodayToBackgroundColorConverter x:Key="IsTodayToBackgroundColorConverter"/>
+            <converters:HasEventsToVisibilityConverter x:Key="HasEventsToVisibilityConverter"/>
+            <FlexBasis x:Key="DayWidht">14.28%</FlexBasis>
+        </ResourceDictionary>
+    </ContentView.Resources>
     <StackLayout Spacing="0">
         <FlexLayout BackgroundColor="Red"
                     HeightRequest="56"
@@ -20,7 +27,7 @@
                     Wrap="Wrap">
             <BindableLayout.ItemTemplate>
                 <DataTemplate>
-                    <Label FlexLayout.Basis="14.28%" 
+                    <Label FlexLayout.Basis="{StaticResource DayWidht}"
                            HeightRequest="56"
                            Text="{Binding .}" 
                            FontSize="Body" 
@@ -35,12 +42,12 @@
                     Wrap="Wrap">
             <BindableLayout.ItemTemplate>
                 <DataTemplate>
-                    <Frame FlexLayout.Basis="14.28%"
+                    <Frame FlexLayout.Basis="{StaticResource DayWidht}"
                            Padding="0"
                            HeightRequest="56"
                            CornerRadius="20"
                            HasShadow="False"
-                           BackgroundColor="{Binding ., Converter={converters:IsTodayToBackgroundColorConverter}}"
+                           BackgroundColor="{Binding ., Converter={StaticResource IsTodayToBackgroundColorConverter}}"
                            >
                         <Grid RowSpacing="0"
                               VerticalOptions="Center">
@@ -55,7 +62,7 @@
                                    HorizontalTextAlignment="Center"
                                    VerticalTextAlignment="Center"
                                    />
-                            <BoxView IsVisible="false"
+                            <BoxView IsVisible="{Binding ., Converter={StaticResource HasEventsToVisibilityConverter}}"
                                      Grid.Row="1"
                                      WidthRequest="8"
                                      HeightRequest="8"
@@ -66,14 +73,6 @@
                                      />
                         </Grid>
                     </Frame>
-                    <!--
-                    <Label FlexLayout.Basis="14.28%" 
-                           Text="{Binding .}" 
-                           FontSize="Subtitle" 
-                           HorizontalTextAlignment="Center"
-                           VerticalTextAlignment="Center"
-                        />
-                    -->
                 </DataTemplate>
             </BindableLayout.ItemTemplate>
         </FlexLayout>

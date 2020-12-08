@@ -9,14 +9,14 @@ using Xamarin.Forms;
 
 namespace Xalendar.View.Converters
 {
-    public class IsTodayToBackgroundColorConverter : IValueConverter
+    public class HasEventsToVisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value is Day day)
-                return day.IsToday ? Color.Red : Color.Transparent;
+                return day.HasEvents;
 
-            return Color.Transparent;
+            return false;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
