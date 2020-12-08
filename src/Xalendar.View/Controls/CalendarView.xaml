@@ -46,7 +46,7 @@
                            HeightRequest="56"
                            CornerRadius="20"
                            HasShadow="False"
-                           BackgroundColor="{Binding ., Converter={StaticResource IsTodayToBackgroundColorConverter}"
+                           BackgroundColor="{Binding ., Converter={StaticResource IsTodayToBackgroundColorConverter}}"
                            >
                         <Grid RowSpacing="0"
                               VerticalOptions="Center">
