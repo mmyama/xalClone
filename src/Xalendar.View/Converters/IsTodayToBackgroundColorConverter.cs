@@ -14,8 +14,7 @@ namespace Xalendar.View.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value is Day day)
-                if (day != null)
-                    return day.IsToday ? Color.Red : Color.Transparent;
+                return day.IsToday ? Color.Red : Color.Transparent;
 
             return Color.Transparent;
         }
