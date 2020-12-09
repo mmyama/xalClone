@@ -74,7 +74,7 @@ namespace Xalendar.Api.Tests.Models
             var dateTime = new DateTime(2020, 12, 1);
             var monthContainer = new MonthContainer(dateTime);
 
-            var result = monthContainer.GetName();
+            var result = monthContainer.GetMonthName();
 
             Assert.AreEqual(monthContainer._month.MonthDateTime.ToString("MMMM"), result);
         }
@@ -87,7 +87,7 @@ namespace Xalendar.Api.Tests.Models
 
             monthContainer.Next();
 
-            Assert.AreEqual(monthContainer._month.MonthDateTime.ToString("MMMM"), monthContainer.GetName());
+            Assert.AreEqual(monthContainer._month.MonthDateTime.ToString("MMMM"), monthContainer.GetMonthName());
         }
 
         [Test]
@@ -98,7 +98,7 @@ namespace Xalendar.Api.Tests.Models
 
             monthContainer.Previous();
 
-            Assert.AreEqual(monthContainer._month.MonthDateTime.ToString("MMMM"), monthContainer.GetName());
+            Assert.AreEqual(monthContainer._month.MonthDateTime.ToString("MMMM"), monthContainer.GetMonthName());
         }
 
         [Test]

@@ -15,15 +15,25 @@
         <FlexLayout BackgroundColor="Red"
                     HeightRequest="56"
                     AlignItems="Center">
-            <Label Text="Voltar"/>
-            <Label Text="{Binding MonthName}"
+            <Button Text="◀"
+                    Clicked="OnPreviousMonthClick"/>
+            <Label x:Name="MonthName"
                    FontSize="Title"
                    FlexLayout.Grow="1"
+                   Padding="0"
+                   Margin="0"
                    HorizontalTextAlignment="Center"/>
-            <Label Text="Avançar"/>
+            <Button Text="▶"
+                    Clicked="OnNextMonthClick"/>
         </FlexLayout>
-        
-        <FlexLayout BindableLayout.ItemsSource="{Binding DaysOfWeek}" 
+        <Label x:Name="YearName"
+               BackgroundColor="Red"
+               FontSize="Large"
+                FlexLayout.Grow="1"
+               HorizontalTextAlignment="Center"
+               Margin="0"/>
+
+        <FlexLayout x:Name="CalendarDaysOfWeekContainer" 
                     Wrap="Wrap">
             <BindableLayout.ItemTemplate>
                 <DataTemplate>
@@ -38,7 +48,7 @@
             </BindableLayout.ItemTemplate>
         </FlexLayout>
 
-        <FlexLayout BindableLayout.ItemsSource="{Binding Days}" 
+        <FlexLayout x:Name="CalendarDaysContainer" 
                     Wrap="Wrap">
             <BindableLayout.ItemTemplate>
                 <DataTemplate>
