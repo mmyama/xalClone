@@ -17,7 +17,8 @@ namespace Xalendar.View.Controls
             _monthContainer = new MonthContainer(DateTime.Today);
             BindableLayout.SetItemsSource(CalendarDaysContainer, _monthContainer.Days);
             BindableLayout.SetItemsSource(CalendarDaysOfWeekContainer, _monthContainer.DaysOfWeek);
-            MonthName.Text = _monthContainer.GetName();
+            MonthName.Text = _monthContainer.GetMonthName();
+            YearName.Text = _monthContainer.GetYearName();
 
         }
 
@@ -26,9 +27,8 @@ namespace Xalendar.View.Controls
             _monthContainer.Previous();
 
             BindableLayout.SetItemsSource(CalendarDaysContainer, _monthContainer.Days);
-            MonthName.Text = _monthContainer.GetName();
-
-            System.Diagnostics.Debug.WriteLine("Mês anterior");
+            MonthName.Text = _monthContainer.GetMonthName();
+            YearName.Text = _monthContainer.GetYearName();
         }
 
         private void OnNextMonthClick(object sender, EventArgs e)
@@ -36,9 +36,8 @@ namespace Xalendar.View.Controls
             _monthContainer.Next();
 
             BindableLayout.SetItemsSource(CalendarDaysContainer, _monthContainer.Days);
-            MonthName.Text = _monthContainer.GetName();
-
-            System.Diagnostics.Debug.WriteLine("Mês posterior");
+            MonthName.Text = _monthContainer.GetMonthName();
+            YearName.Text = _monthContainer.GetYearName();
         }
 
     }

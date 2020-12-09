@@ -20,11 +20,19 @@
             <Label x:Name="MonthName"
                    FontSize="Title"
                    FlexLayout.Grow="1"
+                   Padding="0"
+                   Margin="0"
                    HorizontalTextAlignment="Center"/>
             <Button Text="▶"
                     Clicked="OnNextMonthClick"/>
         </FlexLayout>
-        
+        <Label x:Name="YearName"
+               BackgroundColor="Red"
+               FontSize="Large"
+                FlexLayout.Grow="1"
+               HorizontalTextAlignment="Center"
+               Margin="0"/>
+
         <FlexLayout x:Name="CalendarDaysOfWeekContainer" 
                     Wrap="Wrap">
             <BindableLayout.ItemTemplate>

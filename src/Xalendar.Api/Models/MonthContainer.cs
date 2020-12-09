@@ -16,18 +16,15 @@ namespace Xalendar.Api.Models
         [EditorBrowsable(EditorBrowsableState.Never)]
         public Month _month;
 
-        public IReadOnlyList<Day?> Days { get; }
+        public IReadOnlyList<Day?> Days => GetDaysOfContainer();
+
+
         public IReadOnlyList<string> DaysOfWeek { get; }
 
         public MonthContainer(DateTime dateTime)
         {
             _month = new Month(dateTime);
 
-            var daysOfContainer = new List<Day?>();
-            this.GetDayToDiscardAtStartOfMonth(daysOfContainer);
-            daysOfContainer.AddRange(_month.Days);
-            this.GetDayToDiscardAtEndOfMonth(daysOfContainer);
-            Days = daysOfContainer;
 
             var cultureInfo = CultureInfo.CurrentCulture;
             var dateTimeFormat = cultureInfo.DateTimeFormat;
@@ -42,5 +39,16 @@ namespace Xalendar.Api.Models
                 dateTimeFormat.GetAbbreviatedDayName(DayOfWeek.Saturday).Substring(0,3).ToUpper()
             };
         }
+
+        private IReadOnlyList<Day?> GetDaysOfContainer()
+        {
+            var daysOfContainer = new List<Day?>();
+            this.GetDayToDiscardAtStartOfMonth(daysOfContainer);
+            daysOfContainer.AddRange(_month.Days);
+            this.GetDayToDiscardAtEndOfMonth(daysOfContainer);
+            return daysOfContainer;
+
+        }
+
     }
 }
