@@ -22,5 +22,16 @@ namespace Xalendar.View.Controls
 
             BindingContext = new CalendarViewModel();
         }
+
+        private void OnPreviousMonthClick(object sender, EventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("Mês anteiror");
+        }
+
+        private void OnNextMonthClick(object sender, EventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("Mês posterior");
+        }
+
     }
 }

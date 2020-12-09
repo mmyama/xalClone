@@ -15,14 +15,14 @@
         <FlexLayout BackgroundColor="Red"
                     HeightRequest="56"
                     AlignItems="Center">
-            <Button Text="Voltar"
-                    Command="{Binding NavigateToPreviousMonthCommand}"/>
+            <Button Text="◀"
+                    Clicked="OnPreviousMonthClick"/>
             <Label x:Name="MonthName"
                    FontSize="Title"
                    FlexLayout.Grow="1"
                    HorizontalTextAlignment="Center"/>
-            <Button Text="Avançar"
-                    Command="{Binding NavigateToNextMonthCommand}"/>
+            <Button Text="▶"
+                    Clicked="OnNextMonthClick"/>
         </FlexLayout>
         
         <FlexLayout x:Name="CalendarDaysOfWeekContainer" 
