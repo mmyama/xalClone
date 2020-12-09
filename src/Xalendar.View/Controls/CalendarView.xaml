@@ -25,7 +25,7 @@
                     Command="{Binding NavigateToNextMonthCommand}"/>
         </FlexLayout>
         
-        <FlexLayout BindableLayout.ItemsSource="{Binding DaysOfWeek}" 
+        <FlexLayout x:Name="CalendarDaysOfWeekContainer" 
                     Wrap="Wrap">
             <BindableLayout.ItemTemplate>
                 <DataTemplate>
