@@ -17,7 +17,7 @@
                     AlignItems="Center">
             <Button Text="Voltar"
                     Command="{Binding NavigateToPreviousMonthCommand}"/>
-            <Label Text="{Binding MonthName}"
+            <Label x:Name="MonthName"
                    FontSize="Title"
                    FlexLayout.Grow="1"
                    HorizontalTextAlignment="Center"/>
