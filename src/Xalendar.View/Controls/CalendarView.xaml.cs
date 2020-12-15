@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xalendar.Api.Extensions;
 using Xalendar.Api.Models;
@@ -25,20 +26,50 @@ namespace Xalendar.View.Controls
 
         private async void OnPreviousMonthClick(object sender, EventArgs e)
         {
-            await Task.Run(() => _monthContainer.Previous());
+            var result = await Task.Run(() =>
+            {
+                _monthContainer.Previous();
 
-            BindableLayout.SetItemsSource(CalendarDaysContainer, _monthContainer.Days);
-            MonthName.Text = _monthContainer.GetMonthName();
-            YearName.Text = _monthContainer.GetYearName();
+                var days = _monthContainer.Days;
+                var monthName = _monthContainer.GetMonthName();
+                var yearName = _monthContainer.GetYearName();
+
+                return (days, monthName, yearName);
+            });
+
+            MonthName.Text = result.monthName;
+            YearName.Text = result.yearName;
+            RecycleDays(result.days);
+
         }
+
 
         private async void OnNextMonthClick(object sender, EventArgs e)
         {
-            await Task.Run(() => _monthContainer.Next());
+            var result = await Task.Run(() =>
+            {
+                _monthContainer.Next();
 
-            BindableLayout.SetItemsSource(CalendarDaysContainer, _monthContainer.Days);
-            MonthName.Text = _monthContainer.GetMonthName();
-            YearName.Text = _monthContainer.GetYearName();
+                var days = _monthContainer.Days;
+                var monthName = _monthContainer.GetMonthName();
+                var yearName = _monthContainer.GetYearName();
+
+                return (days, monthName, yearName);
+            });
+
+            MonthName.Text = result.monthName;
+            YearName.Text = result.yearName;
+            RecycleDays(result.days);
+        }
+
+        private void RecycleDays(IReadOnlyList<Day> days)
+        {
+            for (var i = 0; i < CalendarDaysContainer.Children.Count; i++)
+            {
+                var dayContainer = days[i];
+                var dayView = CalendarDaysContainer.Children[i];
+                dayView.BindingContext = dayContainer;
+            }
         }
 
     }
