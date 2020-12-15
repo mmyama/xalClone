@@ -17,19 +17,19 @@ namespace Xalendar.Api.Tests.Models
     {
         [Test]
         [TestCaseSource(nameof(MonthsValuesTests))]
-        public void MonthContainerShouldContainDaysOfCurrentNextAndPreviousMonthes(DateTime dateTime, int totalDays)
+        public void MonthContainerShouldContain42Days(DateTime dateTime)
         {
             var monthContainer = new MonthContainer(dateTime);
 
             Assert.IsNotEmpty(monthContainer.Days);
-            Assert.AreEqual(totalDays, monthContainer.Days.Count);
+            Assert.AreEqual(42, monthContainer.Days.Count);
         }
 
         private static object[] MonthsValuesTests =
         {
-            new object[] {new DateTime(2020, 7, 1), 35},
-            new object[] {new DateTime(2020, 8, 1), 42},
-            new object[] {new DateTime(2015, 2, 1), 28}
+            new object[] {new DateTime(2020, 7, 1)},
+            new object[] {new DateTime(2020, 8, 1)},
+            new object[] {new DateTime(2015, 2, 1)}
         };
 
         [Test]
